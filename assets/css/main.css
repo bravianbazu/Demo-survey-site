@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    padding: 0;
+    /*background-color: rgba(0, 0, 82, 0.61);*/
+    box-sizing: border-box;
+    background-image: url('/assets/img/academybg.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover; /* Ensure the background image covers the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0.5); /* Blueish hue with 50% opacity */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 150px;
+    background-color: rgb(189, 212, 255);
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+}
+
+.navigation .logo {
+    text-align: center;
+    width: 30%;
+}
+
+.navigation .nav_menu {
+    width: 40%;
+}
+
+.navigation .logo img {
+    width: 90px;
+}
+
+.navigation .nav_menu ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.nav_menu ul li {
+    list-style: none;
+    text-transform: none;
+    margin: 0 10px;
+    padding-top: 20px;
+}
+
+li a {
+    text-decoration: none;
+    color: rgb(0, 45, 127);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-family: 'poppins';
+}
+
+li a:hover {
+    color: #fff;
+}
+
+.user {
+    width: 30%;
+    margin-right: 10px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.user p {
+    color: rgb(0, 45, 127);
+}
+
+.form-container {
+    margin: 10px 150px;
+    background-color: rgba(0, 0, 82, 0.61); /* Adjust alpha value for transparency */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+
+.form-container h1,
+.form-container h4 {
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.form-container h4 {
+    padding-top: 0;
+    font-weight: 200;
+}
+
+form {
+    width: 80%; /* Adjusted width */
+    background-color: rgba(17, 17, 73, 0.61);
+    margin: 0 auto;
+    text-align: start;
+    padding: 20px 50px;
+}
+
+label {
+    color: #fff;
+    text-align: left;
+    display: inline-block; /* Labels on left */
+   /* width: 20%; /* Adjusted width */
+    padding-right: 10px; /* Spacing between label and input */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="submit"],
+select,
+textarea {
+    width: 100%; /* Adjusted width */
+    padding: 5px;
+    margin: 5px auto;
+}
+
+input[type="submit"] {
+    background-color:rgb(81, 208, 81);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type="submit"]:hover {
+    background-color:cornflowerblue;
+}
+
+.radio-button {
+    margin-top: 5px;
+    list-style: none;
+}
+
+.check {
+    margin-top: 0; /* Remove default margin */
+    padding-left: 5%; /* Indent checkboxes */
+    list-style: none;
+}
+
+fieldset {
+    border: none; /* Remove border */
+    padding: 10px 0;
+}
+
+.commentbox textarea {
+    width: 100%; /* Adjusted width */
+    padding: 5px;
+    margin: 5px 0;
+
+}
+.msg {
+    margin: 0 auto;
+    background-color: rgb(104, 167, 104);
+    color: white;
+    padding: 5px;
+    text-align: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 3px;
+}
+
+/* .btn-primary {
+    margin-top: 10px; /* Add spacing below the submit button */
+    /* width: 100%; /* Adjust*/
+    /* border: none;
+}*/ 
+
+.footer-bunner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 150px 0 150px;
+    background-color: rgb(189, 212, 255);
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+}
+
+.faqs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+
+}
+.footer-bunner p {
+    color: rgb(0, 45, 127);
+}
+.subscribe-form form{
+padding: 3px;
+border-radius: 3px;
+background-color:transparent;
+
+}
+.subscribe-form h6 {
+    color: rgb(0, 45, 127);
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+
+.subscribe-form button {
+    background-color:rgb(81, 208, 81);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.subscribe-form button:hover {
+    background-color:cornflowerblue;
+}
