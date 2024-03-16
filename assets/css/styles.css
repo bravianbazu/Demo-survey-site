@@ -10,7 +10,13 @@ body {
     position: relative;
 }
 
-
+.overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0.5); /* Blueish hue with 50% opacity */
+}
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -119,7 +125,16 @@ textarea {
     margin: 5px auto;
 }
 
+button[type="submit"]{
+    background-color:rgb(81, 208, 81);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
 
+button[type="submit"]:hover {
+    background-color:cornflowerblue;
+}
 
 textarea {
     width: 100%; /* Make the textarea span the available width */
@@ -145,81 +160,24 @@ textarea:focus {
     width: fit-content;
     border-radius: 3px;
 }
-button[type="submit"] {
-    background-color: #f0ecfc;
-  background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
-    line-height: 42px;
-    padding: 0;
-    border: none;
-  }
-  button[type="submit"] span {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  button[type="submit"]:before,
-  button[type="submit"]:after {
-    position: absolute;
-    content: "";
-    right: 0;
-    bottom: 0;
-    background: #c797eb;
-    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-      inset -4px -4px 6px 0 rgba(255,255,255,.5),
-      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
-    transition: all 0.3s ease;
-  }
-  button[type="submit"]:before{
-     height: 0%;
-     width: 2px;
-  }
-  button[type="submit"]:after {
-    width: 0%;
-    height: 2px;
-  }
-  button[type="submit"]:hover:before {
-    height: 100%;
-  }
-  button[type="submit"]:hover:after {
-    width: 100%;
-  }
-  button[type="submit"]:hover{
-    background: transparent;
-  }
-  button[type="submit"] span:hover{
-    color: #c797eb;
-  }
-  button[type="submit"] span:before,
-  button[type="submit"] span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    background: #c797eb;
-    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-      inset -4px -4px 6px 0 rgba(255,255,255,.5),
-      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
-    transition: all 0.3s ease;
-  }
-  button[type="submit"] span:before {
-    width: 2px;
-    height: 0%;
-  }
-  button[type="submit"] span:after {
-    height: 2px;
-    width: 0%;
-  }
-  button[type="submit"]:hover:before {
-    height: 100%;
-  }
-  button[type="submit"]:hover:after {
-    width: 100%;
-  }
-    
 
+.submit-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
 
 .footer-bunner {
     display: flex;
