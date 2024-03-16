@@ -65,5 +65,5 @@ func main() {
 		c.JSON(200, gin.H{"message": "Survey submitted successfully"})
 	})
 
-	router.Run(":8080") // Run the server (you might want to choose a different port)
+	router.Run(":8080")
 }
