@@ -1,57 +1,69 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"encoding/csv"
+	"os"
 	"strings"
-	"text/template"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
-var tmpl *template.Template
-
-func init() {
-	tmpl = template.Must(template.ParseFiles("./template/form.html"))
+type SurveyData struct {
+	Name            string   `json:"name"`
+	Email           string   `json:"email"`
+	Age             string   `json:"age"`
+	Role            string   `json:"role"`
+	FavoriteFeature string   `json:"favoriteFeature"`
+	Improvements    []string `json:"improvements"`
+	Comments        string   `json:"comments"`
 }
 
-type studentSurvey struct {
-	Name            string
-	Email           string
-	Age             string
-	Role            string
-	FavoriteFeature string
-	Recommendation  string
-	Comments        string
-}
+func appendToCSV(surveyData SurveyData, csvFilename string) error {
+	file, err := os.OpenFile(csvFilename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
 
-func formHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		tmpl.Execute(w, nil)
-		return
-	}
-	ideas := r.Form["improvements"]
-	recommendation := strings.Join(ideas, ", ")
+	writer := csv.NewWriter(file)
+	err = writer.Write([]string{
+		surveyData.Name,
+		surveyData.Email,
+		surveyData.Age,
+		surveyData.Role,
+		surveyData.FavoriteFeature,
+		strings.Join(surveyData.Improvements, "|"),
+		surveyData.Comments,
+	})
 
-	student := studentSurvey{
-		Name:            r.FormValue("name"),
-		Email:           r.FormValue("email"),
-		Age:             r.FormValue("age"),
-		Role:            r.FormValue("current-role"),
-		FavoriteFeature: r.FormValue("radio-buttons"),
-		Recommendation:  recommendation,
-		Comments:        r.FormValue("comment"),
+	if err != nil {
+		return err
 	}
-	if r.FormValue("submit") == "Submit" {
-		tmpl.Execute(w, struct {
-			Success bool
-			Message string
-		}{Success: true, Message: "Survey Complete"})
-	}
-	fmt.Println(student)
+
+	writer.Flush()
+	return nil
 }
 
 func main() {
-	fs := http.FileServer(http.Dir("assets"))
-	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
-	http.HandleFunc("/", formHandler)
-	http.ListenAndServe(":8080", nil)
+	router := gin.Default()
+	router.Use(cors.Default())
+
+	router.POST("/submit-survey", func(c *gin.Context) {
+		var surveyData SurveyData
+		if err := c.BindJSON(&surveyData); err != nil {
+			c.JSON(400, gin.H{"error": "Invalid survey data"})
+			return
+		}
+
+		err := appendToCSV(surveyData, "survey_results.csv")
+		if err != nil {
+			c.JSON(500, gin.H{"error": "Failed to save survey data"})
+			return
+		}
+
+		c.JSON(200, gin.H{"message": "Survey submitted successfully"})
+	})
+
+	router.Run(":8080") // Run the server (you might want to choose a different port)
 }

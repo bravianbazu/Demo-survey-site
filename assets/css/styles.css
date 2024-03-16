@@ -9,14 +9,7 @@ body {
     background-repeat: no-repeat; /* Prevent background image from repeating */
     position: relative;
 }
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 255, 0.5); /* Blueish hue with 50% opacity */
-}
+
 
 .navigation {
     display: flex;
@@ -87,8 +80,8 @@ li a:hover {
     position: relative;
 }
 
-.form-container h1,
-.form-container h4 {
+h1,
+h4 {
     color: #fff;
     text-align: center;
     font-weight: 300;
@@ -126,38 +119,21 @@ textarea {
     margin: 5px auto;
 }
 
-input[type="submit"] {
-    background-color:rgb(81, 208, 81);
-    color: #fff;
-    border: none;
-    border-radius: 3px;
+
+
+textarea {
+    width: 100%; /* Make the textarea span the available width */
+    height: 150px; /* Adjust the height as needed */
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px;  /* Add slightly rounded corners */
+    font-family: inherit; /* Inherit the font from the rest of your form */
 }
 
-input[type="submit"]:hover {
-    background-color:cornflowerblue;
-}
-
-.radio-button {
-    margin-top: 5px;
-    list-style: none;
-}
-
-.check {
-    margin-top: 0; /* Remove default margin */
-    padding-left: 5%; /* Indent checkboxes */
-    list-style: none;
-}
-
-fieldset {
-    border: none; /* Remove border */
-    padding: 10px 0;
-}
-
-.commentbox textarea {
-    width: 100%; /* Adjusted width */
-    padding: 5px;
-    margin: 5px 0;
-
+textarea:focus {
+    border-color: #007bff; /* Example: highlight with a blue border */
+    outline: none; /* Remove the default focus outline if desired */ 
 }
 .msg {
     margin: 0 auto;
@@ -169,12 +145,81 @@ fieldset {
     width: fit-content;
     border-radius: 3px;
 }
+button[type="submit"] {
+    background-color: #f0ecfc;
+  background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+  }
+  button[type="submit"] span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  button[type="submit"]:before,
+  button[type="submit"]:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: #c797eb;
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+  }
+  button[type="submit"]:before{
+     height: 0%;
+     width: 2px;
+  }
+  button[type="submit"]:after {
+    width: 0%;
+    height: 2px;
+  }
+  button[type="submit"]:hover:before {
+    height: 100%;
+  }
+  button[type="submit"]:hover:after {
+    width: 100%;
+  }
+  button[type="submit"]:hover{
+    background: transparent;
+  }
+  button[type="submit"] span:hover{
+    color: #c797eb;
+  }
+  button[type="submit"] span:before,
+  button[type="submit"] span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #c797eb;
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+  }
+  button[type="submit"] span:before {
+    width: 2px;
+    height: 0%;
+  }
+  button[type="submit"] span:after {
+    height: 2px;
+    width: 0%;
+  }
+  button[type="submit"]:hover:before {
+    height: 100%;
+  }
+  button[type="submit"]:hover:after {
+    width: 100%;
+  }
+    
 
-/* .btn-primary {
-    margin-top: 10px; /* Add spacing below the submit button */
-    /* width: 100%; /* Adjust*/
-    /* border: none;
-}*/ 
 
 .footer-bunner {
     display: flex;
